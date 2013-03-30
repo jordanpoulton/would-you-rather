@@ -10,18 +10,21 @@
       </ul>
     </div>
   <% end %>
-<div class="row">
-  <div class="span6">
-    <%= f.text_field :option_true, :placeholder => "Option 1" %>
+<div id="new-question-form">
+  <div class="row">
+    <div class="span6">
+      <%= f.text_field :option_true, :placeholder => "Option 1" %>
+    </div>
+    <div class="span6">
+      <%= f.text_field :option_false, :placeholder => "Option 2" %>
+    </div>
+    </div>
   </div>
-  <div class="span6">
-    <%= f.text_field :option_false, :placeholder => "Option 2" %>
-  </div>
-</div>
-<div class = "span6">
-  <%= current_user ? (f.hidden_field :user_id, :value => current_user.id) : "" %>
-</div>
+    <%= current_user ? (f.hidden_field :user_id, :value => current_user.id) : "" %>
   <div class="form-actions">
-    <%= f.submit %>
+      <%= f.submit "Ask Question" %>
   </div>
+</div>
+
+
 <% end %>
