@@ -1,6 +1,12 @@
 WouldYouRather::Application.routes.draw do
   devise_for :users
 
+  devise_scope :user do
+    match 'register', :to => 'devise/registrations#new', as: :register
+    match 'login', :to => 'devise/sessions#new', as: :login
+    match 'logout', :to => 'devise/sessions#destroy', as: :logout
+  end
+
   root :to => 'questions#index'
 
   resources :questions do
