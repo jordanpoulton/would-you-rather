@@ -10,9 +10,19 @@
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <a href="#" class="brand"> Would you rather... </a>
+        <a href="/" class="brand"> Would you rather...</a>
         <ul class="nav">
           <li><%= link_to "All Questions", questions_path %></li>
+        </ul>
+        <ul class="nav pull-right">
+          <% if user_signed_in? %>
+          <li><%= link_to current_user.profile_name, edit_user_registration_path %></li>
+          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+          <li><%= link_to "Log in", new_user_session_path%></li>
+          <li><%= link_to "Sign Up", new_user_registration_path%></li>
+          <%end%>
+        </ul>
       </div>
     </div>
   </div>
