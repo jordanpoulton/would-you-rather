@@ -1,3 +1,37 @@
 // Place all the styles related to the questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.questions .admin{
+  display: none;
+}
+
+.questions.hover .admin{
+  display: inline;
+}//Hover class is created dynamically through Javascript
+
+.questions.hover {
+  background-color: #efefef;
+}
+
+.new-question div div{
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+}
+
+.new-question div div{
+  font-size: 24px;
+  text-decoration: none;
+  color: white;
+}
+
+.question-button{
+  text-align: center;
+  padding: 30px 0px;
+  margin: 10px 0px;
+  border: 2px solid purple;
+  border-radius: 15px;
+  background-color: purple;
+  color: white;
+}

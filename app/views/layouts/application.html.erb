@@ -7,8 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a href="#" class="brand"> Would you rather... </a>
+        <ul class="nav">
+          <li><%= link_to "All Questions", questions_path %></li>
 
-<%= yield %>
+      </div>
+    </div>
+  </div>
 
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+
+
+  <footer class="navbar navbar-fixed-bottom"><em>Brought to you by Skallywag Enterprises</em></footer>
 </body>
 </html>
