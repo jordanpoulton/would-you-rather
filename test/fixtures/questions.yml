@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  option_true: MyString
+  option_false: MyString
+  answer: false
+
+two:
+  option_true: MyString
+  option_false: MyString
+  answer: false
