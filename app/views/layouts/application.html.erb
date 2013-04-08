@@ -5,14 +5,14 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-</head>
-<body>
+
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
         <a href="/" class="brand"> Would you rather...</a>
         <ul class="nav">
           <li><%= link_to "All Questions", questions_path %></li>
+          <li><%= link_to 'Create a new Question', new_question_path %></li>
         </ul>
         <ul class="nav pull-right">
           <% if user_signed_in? %>
@@ -26,19 +26,22 @@
       </div>
     </div>
   </div>
+</head>
+<body>
   <div class="container">
-    <% flash.each do |type, message| %>
-      <div class="alert <%= flash_class type %>">
-        <button class="close" data-dismiss="alert">x</button>
-        <%= message %>
-      </div>
-      <%end%>
-
-
-
-
-    <%= yield %>
+      <% flash.each do |type, message| %>
+    <div class="alert <%= flash_class type %>">
+      <button class="close" data-dismiss="alert">x</button>
+      <%= message %>
+    </div>
+    <%end%>
   </div>
+
+  <div class="page-header">
+    <h1>Would you rather...</h1>
+  </div>
+
+  <%= yield %>
 
 
 

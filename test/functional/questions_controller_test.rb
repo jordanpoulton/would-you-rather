@@ -1,24 +1,21 @@
 require 'test_helper'
+require_relative '../factories/question_factory'
 
 class QuestionsControllerTest < ActionController::TestCase
-  # setup do
-  #   @question = questions(:one)
-  # end
+  include Devise::TestHelpers #Gets around 'authenticate error' - part of devise
+  setup do
+    @question = QuestionFactory.legit_question
+  end
 
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  #   assert_not_nil assigns(:questions)
-  # end
-
-  # test "should get new" do
-  #   get :new
-  #   assert_response :success
-  # end
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:questions)
+  end
 
   # test "should create question" do
   #   assert_difference('Question.count') do
-  #     post :create, question: { answer: @question.answer, option_false: @question.option_false, option_true: @question.option_true }
+  #     post :create, question: { option_false: @question.option_false, option_true: @question.option_true }
   #   end
 
   #   assert_redirected_to question_path(assigns(:question))
@@ -35,7 +32,7 @@ class QuestionsControllerTest < ActionController::TestCase
   # end
 
   # test "should update question" do
-  #   put :update, id: @question, question: { answer: @question.answer, option_false: @question.option_false, option_true: @question.option_true }
+  #   put :update, id: @question, question: { option_false: @question.option_false, option_true: @question.option_true }
   #   assert_redirected_to question_path(assigns(:question))
   # end
 
