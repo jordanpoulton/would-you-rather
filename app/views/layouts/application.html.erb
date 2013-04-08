@@ -6,6 +6,10 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
+
+</head>
+<body>
+
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -26,10 +30,9 @@
       </div>
     </div>
   </div>
-</head>
-<body>
-  <div class="container">
-      <% flash.each do |type, message| %>
+
+  <div class = 'flash-notices'>
+    <% flash.each do |type, message| %>
     <div class="alert <%= flash_class type %>">
       <button class="close" data-dismiss="alert">x</button>
       <%= message %>
