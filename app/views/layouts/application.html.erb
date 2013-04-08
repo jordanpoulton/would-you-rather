@@ -13,19 +13,17 @@
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <a href="/" class="brand"> Would you rather...</a>
+        <a href="/" class="brand logo"> Would you rather...</a>
         <ul class="nav">
           <li><%= link_to "All Questions", questions_path %></li>
-          <li><%= link_to 'Create a new Question', new_question_path %></li>
-          <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
         </ul>
         <ul class="nav pull-right">
-          <% if user_signed_in? %>
+           <% if user_signed_in? %>
+          <li><%= link_to 'Create a new Question', new_question_path %></li>
           <li><%= link_to current_user.profile_name, edit_user_registration_path %></li>
           <li><%= link_to "Log out", logout_path, method: :delete %></li>
           <% else %>
-          <li><%= link_to "Log in", login_path%></li>
-          <li><%= link_to "Register", register_path%></li>
+          <li><%= link_to "Sign up/in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
           <%end%>
         </ul>
       </div>
@@ -41,14 +39,14 @@
     <%end%>
   </div>
 
-  <div class="page-header">
-    <h1>Would you rather...</h1>
+  <div class="page-header logo">
+    <h1>An endless supply of entertaining questions...</h1>
   </div>
 
   <%= yield %>
 
 
 
-  <footer class="navbar navbar-fixed-bottom"><em>Brought to you by Skallywag Enterprises</em></footer>
+  <footer class="navbar navbar-fixed-bottom"><em>Brought to you by Skallywag Enterprises</em><%= params.inspect %></footer>
 </body>
 </html>

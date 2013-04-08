@@ -12,23 +12,25 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :questions
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
   validates :profile_name, presence: true, uniqueness: true
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-  user = User.where(:provider => auth.provider, :uid => auth.uid).first
-  unless user
-    user = User.create(name:auth.extra.raw_info.name,
-                         provider:auth.provider,
-                         uid:auth.uid,
-                         email:auth.info.email,
-                         password:Devise.friendly_token[0,20]
-                         )
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      password = Devise.friendly_token[0,20]
+      user = User.create(first_name: auth.first_name,
+                           last_name: auth.last_name,
+                           profile_name:auth.extra.raw_info.name,
+                           provider:auth.provider,
+                           uid:auth.uid,
+                           email:auth.info.email,
+                           password: password,
+                           password_confirmation: password
+                           )
+    end
+    user
   end
-  user
-end
 
 end

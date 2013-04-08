@@ -10,6 +10,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.

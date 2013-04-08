@@ -1,16 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Option true:</b>
-  <%= @question.option_true %>
-</p>
 
-<p>
-  <b>Option false:</b>
-  <%= @question.option_false %>
-</p>
+<div>
+  <%= form_for @answer, :url => question_answers_path(@question) do |f| %>
+  <input type="hidden" name="user_id" value="<%= current_user.id %>">
+  <input type="hidden" name="question_id" value="<%= params[:id] %>">
+  <input type="hidden" name="answer" value= true >
+  <%= f.submit "#{@question.option_true}"%>
+  <%end%>
+</div>
+
+<div>
+  <%= form_for @answer, :url => question_answers_path(@question) do |f| %>
+  <input type="hidden" name="user_id" value="<%= current_user.id %>">
+  <input type="hidden" name="question_id" value="<%= params[:id] %>">
+  <input type="hidden" name="answer" value= false >
+  <%= f.submit "#{@question.option_false}"%>
+  <%end%>
+</div>
 
 <%= "Question created by" + @question.user.profile_name %>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
+
+<div>
+  Answers:
+  <% @answers.each do |answer| %>
+  <div>
+    <%= "#{answer.user.profile_name} answered #{answer.answer}" %>
+  </div>
+  <% end %>
+</div>
+

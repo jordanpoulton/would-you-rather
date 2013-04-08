@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(:version => 20130408092113) do
     t.text     "comment"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "question_id"
-    t.integer  "user_id"
+    t.integer  "question_id", :null => false
+    t.integer  "user_id",     :null => false
   end
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
