@@ -1,10 +1,11 @@
 WouldYouRather::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   devise_scope :user do
     match 'register', :to => 'devise/registrations#new', as: :register
     match 'login', :to => 'devise/sessions#new', as: :login
     match 'logout', :to => 'devise/sessions#destroy', as: :logout
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
 
   root :to => 'questions#index'

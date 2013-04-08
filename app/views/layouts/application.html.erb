@@ -17,6 +17,7 @@
         <ul class="nav">
           <li><%= link_to "All Questions", questions_path %></li>
           <li><%= link_to 'Create a new Question', new_question_path %></li>
+          <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
         </ul>
         <ul class="nav pull-right">
           <% if user_signed_in? %>
