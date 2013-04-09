@@ -26,9 +26,23 @@ $(document).ready(function(){
 
   // })
 
+  $('.facebook_signup_form iframe').load(function(){
+    if ($('.facebook_signup_form iframe').attr('src') == "/users/auth/facebook") {console.log("frame loaded")}
+    else {$('.facebook_signup_form').modal('hide')};//Hide NOT WORKING!!
+  });
+
   //Make the 'ask a question' option a popup
   $("#ask_question a").on('click', function(){
     $(".ask_question_form").modal({
+      backdrop: true
+    });
+    return false
+  })
+
+  //Make Facebook signup/in a popup
+  $("#facebook_signup_link a").on('click', function(){
+    console.log("button clicked")
+    $(".facebook_signup_form").modal({
       backdrop: true
     });
     return false
@@ -77,8 +91,8 @@ $(document).ready(function(){
     //   backdrop: true
     // });
     return false
-  })
+  });
+
 
 });
-
 

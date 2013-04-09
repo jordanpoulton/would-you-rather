@@ -58,6 +58,8 @@
 
 .modal{
   display: none;
+  height: 800px;
+  width: 800px;
 }
 
 .option_true, .option_false{
@@ -70,4 +72,9 @@
 
 .footer{
   background-color: #2f575d;
+}
+
+.facebook_signup_form iframe{
+  height: 100%;
+  width: 100%;
 }
