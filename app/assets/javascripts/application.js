@@ -15,6 +15,11 @@
 //= require_tree .
 
 $(document).ready(function(){
+  //Get a random Question to display
+  $.getJSON("/questions").done(function(data){
+    console.log(data)
+  })
+
   //Make the 'ask a question' option a popup
   $("#ask_question a").on('click', function(){
     $(".ask_question_form").modal({

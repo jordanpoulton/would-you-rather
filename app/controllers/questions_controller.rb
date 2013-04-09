@@ -5,12 +5,13 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    @random_question = @questions.shuffle.first
     @answer = Answer.new
     @question = Question.new
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @questions }
+      format.json { render json: @random_question }
     end
   end
 
@@ -48,16 +49,10 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(params[:question])
 
-    respond_to do |format|
-      if @question.save
-        # format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        # format.json { render json: @question, status: :created, location: @question }
-        redirect_to root_path
-      else
-        format.html { render action: "new" }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-        redirect_to root_path
-      end
+    if @question.save
+      redirect_to root_path, :notice => "Thanks pal. You're question is out in the ether"
+    else
+      redirect_to root_path, :notice => "Didn't work buddy"
     end
   end
 

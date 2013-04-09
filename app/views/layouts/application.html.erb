@@ -51,6 +51,11 @@
     <%= render :partial => 'questions/form' %>
   </div>
 
-  <footer class="navbar navbar-fixed-bottom"><em>Brought to you by Skallywag Enterprises</em><%= params.inspect %></footer>
+  <footer class="navbar navbar-fixed-bottom footer"><em>Brought to you by Skallywag Enterprises</em>
+    <div><%= params.inspect %></div>
+    <div><%= @question.errors.inspect %></div>
+    <div><%= @answer.errors.inspect %></div>
+    <div><%= session.inspect %></div>
+    </footer>
 </body>
 </html>
