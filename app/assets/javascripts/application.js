@@ -12,13 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
+//= require turbolinks
 //= require_tree .
 
 $(document).ready(function(){
-  //Get a random Question to display
-  $.getJSON("/questions").done(function(data){
-    console.log(data)
-  })
+  //Get a random Question to display - Not needed. Using Turbolinks
+  // $("#skip_question a").on('click', function(){
+  //   $.getJSON("/questions").done(function(data){
+  //     console.log(data)
+  //   });
+  //   return false
+
+  // })
 
   //Make the 'ask a question' option a popup
   $("#ask_question a").on('click', function(){
@@ -35,7 +41,7 @@ $(document).ready(function(){
 
 //from http://developers.facebook.com/docs/reference/dialogs/feed/
 
-  FB.init({appId: "147928815382215", status: true, cookie: true});
+  // FB.init({appId: "147928815382215", status: true, cookie: true}); //Not needed - FB already initialised
   function postToFeed() {
     var object = {
       method: 'feed',

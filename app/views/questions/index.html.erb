@@ -1,12 +1,10 @@
-
-<% @questions.each do |question| %>
 <div class="question_container">
   <div class='logo padding'>
     <h1> Would you rather... </h1>
   </div>
   <div class="row-fluid">
     <div class="span4 offset1">
-      <%= form_for @answer, :url => question_answers_path(question) do |f| %>
+      <%= form_for @answer, :url => question_answers_path(@random_question) do |f| %>
 
         <% if user_signed_in? %>
         <input type="hidden" name="user_id" value="<%= current_user.id %>">
@@ -14,14 +12,14 @@
         <input type="hidden" name="user_id" value="-1">
         <%end%>
 
-      <input type="hidden" name="question_id" value="<%= question.id %>">
+      <input type="hidden" name="question_id" value="<%= @random_question.id %>">
       <input type="hidden" name="answer" value= true >
-      <%= f.submit "#{question.option_true}", :class => "submit_answer_true btn btn-primary"%>
+      <%= f.submit "#{@random_question.option_true}", :class => "submit_answer_true btn btn-primary"%>
       <%end%>
     </div>
     <div class="span2 logo padding"><h1> OR </h1></div>
     <div class="span4">
-      <%= form_for @answer, :url => question_answers_path(question) do |f| %>
+      <%= form_for @answer, :url => question_answers_path(@random_question) do |f| %>
 
       <% if user_signed_in? %>
         <input type="hidden" name="user_id" value="<%= current_user.id %>">
@@ -29,21 +27,22 @@
         <input type="hidden" name="user_id" value="-1">
         <%end%>
 
-      <input type="hidden" name="question_id" value="<%= question.id %>">
+      <input type="hidden" name="question_id" value="<%= @random_question.id %>">
       <input type="hidden" name="answer" value= false >
-      <%= f.submit "#{question.option_false}", :class => "submit_answer_false btn btn-primary"%>
+      <%= f.submit "#{@random_question.option_false}", :class => "submit_answer_false btn btn-primary"%>
       <%end%>
     </div>
 
       <ul>
-        <li><%= link_to 'Show', question %></li>
-        <li> | <%= link_to 'Edit', edit_question_path(question) %></li>
-        <li> | <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <li><%= link_to 'Show', question_path(@random_question) %></li>
+        <li> | <%= link_to 'Edit', edit_question_path(@random_question) %></li>
+        <li> | <%= link_to 'Destroy', @random_question, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <li id="Skip_question"> | <%= link_to 'Skip Question (Currently only returns the JS object)', root_path %></li>
       </ul>
   </div>
 
   <div id="like_button">
-    <iframe src="https://www.facebook.com/plugins/like.php?href=<%= question_path(question)%>"
+    <iframe src="https://www.facebook.com/plugins/like.php?href=<%= question_path(@random_question)%>"
       scrolling="no" frameborder="0"
       style="border:none; width:450px; height:80px">
     </iframe>
@@ -53,6 +52,5 @@
 
   </div>
 </div>
-<% end %>
 
 
