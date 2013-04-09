@@ -16,10 +16,10 @@
 
       <input type="hidden" name="question_id" value="<%= question.id %>">
       <input type="hidden" name="answer" value= true >
-      <%= f.submit "#{question.option_true}", :id => "true_submit_index"%>
+      <%= f.submit "#{question.option_true}", :class => "submit_answer_true btn btn-primary"%>
       <%end%>
     </div>
-    <div class="span2 logo"><h1> OR </h1></div>
+    <div class="span2 logo padding"><h1> OR </h1></div>
     <div class="span4">
       <%= form_for @answer, :url => question_answers_path(question) do |f| %>
 
@@ -31,17 +31,26 @@
 
       <input type="hidden" name="question_id" value="<%= question.id %>">
       <input type="hidden" name="answer" value= false >
-      <%= f.submit "#{question.option_false}", :id => "false_submit_index"%>
+      <%= f.submit "#{question.option_false}", :class => "submit_answer_false btn btn-primary"%>
       <%end%>
     </div>
 
-   <!--  <div class="span2 controls">
       <ul>
-        <li><% link_to 'Show', question %></li>
-        <li> | <% link_to 'Edit', edit_question_path(question) %></li>
-        <li> | <% link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <li><%= link_to 'Show', question %></li>
+        <li> | <%= link_to 'Edit', edit_question_path(question) %></li>
+        <li> | <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></li>
       </ul>
-    </div> -->
+  </div>
+
+  <div id="like_button">
+    <iframe src="https://www.facebook.com/plugins/like.php?href=<%= question_path(question)%>"
+      scrolling="no" frameborder="0"
+      style="border:none; width:450px; height:80px">
+    </iframe>
+  </div>
+
+  <div>
+
   </div>
 </div>
 <% end %>

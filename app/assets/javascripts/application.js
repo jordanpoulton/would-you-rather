@@ -13,3 +13,35 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+  //Make the 'ask a question' option a popup
+  $("#ask_question a").on('click', function(){
+    $(".ask_question_form").modal({
+      backdrop: true
+    });
+    return false
+  })
+
+  $(".option_true input").popover({
+    trigger: 'focus',
+    placement: top
+  });
+
+
+  $(".submit_answer_true").on('click', function(){
+    // $(//Form to post, comment/share on fbook).modal({
+    //   backdrop: true
+    // });
+    return false
+  })
+  $(".submit_answer_false").on('click', function(){
+    // $(//Form to post, comment/share on fbook).modal({
+    //   backdrop: true
+    // });
+    return false
+  })
+
+});
+
+

@@ -19,11 +19,11 @@
         </ul>
         <ul class="nav pull-right">
            <% if user_signed_in? %>
-          <li><%= link_to 'Create a new Question', new_question_path %></li>
+          <li id="ask_question"><%= link_to '+ Ask a Question', new_question_path %></li>
           <li><%= link_to current_user.profile_name, edit_user_registration_path %></li>
           <li><%= link_to "Log out", logout_path, method: :delete %></li>
           <% else %>
-          <li><%= link_to "Sign up/in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+          <li id="facebook_signup_link"><%= link_to "Sign up/in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
           <%end%>
         </ul>
       </div>
@@ -45,7 +45,9 @@
 
   <%= yield %>
 
-
+  <div>
+    <%= render :partial => 'questions/form' %>
+  </div>
 
   <footer class="navbar navbar-fixed-bottom"><em>Brought to you by Skallywag Enterprises</em><%= params.inspect %></footer>
 </body>

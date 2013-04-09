@@ -1,5 +1,12 @@
-<%= form_for(@question, html: {class: "form-inline"}) do |f| %>
-  <% if @question.errors.any? %>
+<div class="ask_question_form modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Ask a Question!</h3>
+  </div>
+  <div class="modal-body">
+    <h5> Would you rather...</h5>
+      <%= form_for(@question, html: {class: "form-inline"}) do |f| %>
+        <% if @question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
@@ -9,24 +16,29 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+      <% end %>
 
 
-<div id="new-question-form">
-  <div class="row">
-    <div class="span6">
-      <%= f.text_field :option_true, :placeholder => "Option 1" %>
+    <div id="new-question-form">
+      <div class="row">
+        <div class="option_true">
+          <%= f.text_field :option_true, :placeholder => "Enter text for Option (A)", :"data-content" => "hello" %>
+        </div>
+        <h5> OR </h5>
+        <div class="option_false">
+          <%= f.text_field :option_false, :placeholder => "Enter text for Option (B)" %>
+        </div>
+      </div>
+        <%= current_user ? (f.hidden_field :user_id, :value => current_user.id) : "" %>
+
+
+      <div class="form-actions">
+          <%= f.submit "Ask Question", :class => "ask_question_submit btn btn-primary pull-right" %>
+      </div>
     </div>
-    <div class="span6">
-      <%= f.text_field :option_false, :placeholder => "Option 2" %>
-    </div>
-    </div>
-  </div>
-    <%= current_user ? (f.hidden_field :user_id, :value => current_user.id) : "" %>
-  <div class="form-actions">
-      <%= f.submit "Ask Question" %>
+
+
+      <% end %>
   </div>
 </div>
 
-
-<% end %>

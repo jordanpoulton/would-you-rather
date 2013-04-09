@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
     @answer = Answer.new
+    @question = Question.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -49,11 +50,13 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render json: @question, status: :created, location: @question }
+        # format.html { redirect_to @question, notice: 'Question was successfully created.' }
+        # format.json { render json: @question, status: :created, location: @question }
+        redirect_to questions_path
       else
         format.html { render action: "new" }
         format.json { render json: @question.errors, status: :unprocessable_entity }
+        redirect_to questions_path
       end
     end
   end
