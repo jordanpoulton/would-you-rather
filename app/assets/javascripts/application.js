@@ -28,6 +28,32 @@ $(document).ready(function(){
     placement: top
   });
 
+//from http://developers.facebook.com/docs/reference/dialogs/feed/
+
+  FB.init({appId: "147928815382215", status: true, cookie: true});
+  function postToFeed() {
+    var object = {
+      method: 'feed',
+      redirect_uri: 'http://localhost:3000',
+      link: 'http://localhost:3000', //Link that FB will display on post
+      picture: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8oQ27KgtLzeSTQUa1DgZz8D-xW_yN3Ah7ADvVSPOil75abme7zQ",
+      name: 'lolcano',
+      caption: 'Testy McTesterton',
+      description: 'Testing like a MoFo'
+    }
+
+    function callback(response){
+      $("#msg").innerHTML = "Post ID: " + response["post_id"];
+    }
+
+    FB.ui(object, callback)
+  };
+
+  $(".post_to_fb").on('click', function(){
+    postToFeed();
+    return false;
+  })
+
 
   $(".submit_answer_true").on('click', function(){
     // $(//Form to post, comment/share on fbook).modal({

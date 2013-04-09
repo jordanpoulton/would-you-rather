@@ -1,3 +1,5 @@
+
+
 <div class="ask_question_form modal hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -34,8 +36,12 @@
 
       <div class="form-actions">
           <%= f.submit "Ask Question", :class => "ask_question_submit btn btn-primary pull-right" %>
+          <button class='post_to_fb btn btn-primary'> Post to Facebook </button>
       </div>
+
     </div>
+
+    <p id='msg'></p>
 
 
       <% end %>
