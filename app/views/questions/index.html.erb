@@ -3,7 +3,7 @@
     <h1> Would you rather... </h1>
   </div>
   <div class="row-fluid">
-    <div class="span4 offset1">
+    <div class="span4">
       <%= form_for @answer, :url => question_answers_path(@random_question) do |f| %>
 
         <% if user_signed_in? %>
@@ -37,7 +37,7 @@
         <li><%= link_to 'Show', question_path(@random_question) %></li>
         <li> | <%= link_to 'Edit', edit_question_path(@random_question) %></li>
         <li> | <%= link_to 'Destroy', @random_question, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-        <li id="Skip_question"> | <%= link_to 'Skip Question (Currently only returns the JS object)', root_path %></li>
+        <li id="Skip_question"> | <%= link_to 'Skip Question', root_path %></li>
       </ul>
   </div>
 
@@ -47,10 +47,10 @@
       style="border:none; width:450px; height:80px">
     </iframe>
   </div>
+</div>
 
-  <div>
-
-  </div>
+<div id="mc_hammer">
+  <img src="http://divshot.github.io/geo-bootstrap/img/test/mchammer.gif">
 </div>
 
 

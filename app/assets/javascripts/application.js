@@ -17,19 +17,14 @@
 //= require_tree .
 
 $(document).ready(function(){
-  //Get a random Question to display - Not needed. Using Turbolinks
-  // $("#skip_question a").on('click', function(){
-  //   $.getJSON("/questions").done(function(data){
-  //     console.log(data)
-  //   });
-  //   return false
-
-  // })
-
-  $('.facebook_signup_form iframe').load(function(){
-    if ($('.facebook_signup_form iframe').attr('src') == "/users/auth/facebook") {console.log("frame loaded")}
-    else {$('.facebook_signup_form').modal('hide')};//Hide NOT WORKING!!
-  });
+  // $('.facebook_signup_form iframe').load(function(){
+  //   if ($('.facebook_signup_form iframe').attr('src') == "/users/auth/facebook") {
+  //     console.log("frame loaded")
+  //   }
+  //   else {
+  //   $('.facebook_signup_form').modal('hide')
+  //   };//Hide NOT WORKING!!
+  // });
 
   //Make the 'ask a question' option a popup
   $("#ask_question a").on('click', function(){
@@ -40,13 +35,13 @@ $(document).ready(function(){
   })
 
   //Make Facebook signup/in a popup
-  $("#facebook_signup_link a").on('click', function(){
-    console.log("button clicked")
-    $(".facebook_signup_form").modal({
-      backdrop: true
-    });
-    return false
-  })
+  // $("#facebook_signup_link a").on('click', function(){
+  //   console.log("button clicked")
+  //   $(".facebook_signup_form").modal({
+  //     backdrop: true
+  //   });
+  //   return false
+  // })
 
   $(".option_true input").popover({
     trigger: 'focus',
